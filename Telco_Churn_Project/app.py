@@ -15,16 +15,18 @@ st.write(
     "Predict whether a telecom customer is likely to leave the company."
 )
 
-MODEL_PATH = Path("best_model.pkl")
-SCALER_PATH = Path("scaler.pkl")
-FEATURES_PATH = Path("feature_columns.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+
+MODEL_PATH = BASE_DIR / "best_model.pkl"
+SCALER_PATH = BASE_DIR / "scaler.pkl"
+FEATURES_PATH = BASE_DIR / "feature_columns.pkl"
 
 if not all(p.exists() for p in [
     MODEL_PATH, SCALER_PATH, FEATURES_PATH
 ]):
     st.error(
-        "Model files are missing. Run the notebook "
-        "and save the model, scaler, and feature columns first."
+        "Model files are missing. Check that all three "
+        "files are in the same folder as app.py."
     )
     st.stop()
 
